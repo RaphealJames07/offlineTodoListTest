@@ -4,22 +4,35 @@ self.addEventListener("install", (e) => {
     e.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache
-                .addAll([
-                    "/",
-                    "/index.html",
-                    "/index.css",
-                    "/script.js",
-                    "static/js/bundle.js",
-                ])
+            .addAll([
+              "./",
+              "./index.html",
+              "./index.css",
+              "./script.js",
+              "./static/js/bundle.js"
+          ])
+          
                 .then(() => self.skipWaiting());
         })
     );
 });
 
 self.addEventListener("activate", (event) => {
-    console.log("activating service worker!!");
-    event.waitUntil(self.clients.claim());
+  const cacheWhitelist = [CACHE_NAME]; // Only keep the current cache
+  event.waitUntil(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames.map((cacheName) => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName); // Delete old caches
+          }
+        })
+      )
+    )
+  );
+  return self.clients.claim();
 });
+
 
 self.addEventListener("fetch", function (event) {
     // console.log(`fetching ${event.request.url}`);
@@ -42,12 +55,13 @@ self.addEventListener("fetch", function (event) {
             return response;
         });
     } else {
-        event.respondWith(
-            caches.match(event.request).then(function (response) {
-                if (response) {
-                    return response;
-                }
-            })
-        );
+      event.respondWith(
+        caches.match(event.request).then(function (response) {
+          return response || fetch(event.request).catch(() => {
+            return caches.match("/offline.html"); // Fallback if offline
+          });
+        })
+      );
+      
     }
 });
