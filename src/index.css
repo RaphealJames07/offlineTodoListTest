@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.MainBody {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+}
+
+.TodoBody {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0px;
+}
+
+.TodoTopText {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TodoDownView {
+    width: 100%;
+    height: 85%;
+    background: #edfdfd;
+}
+
+.TodoInputBox {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.TodoInputBox input {
+    width: 60%;
+    height: 45px;
+    outline: none;
+    border: 2px solid grey;
+    border-radius: 7px;
+    padding-left: 5px;
+    font-weight: 500;
+    font-size: large;
+}
+.TodoInputBox button {
+    width: max-content;
+    height: max-content;
+    padding: 12px 30px;
+    background: #fbb6ce;
+    border: 1px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.TodoListItemsView {
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.TodoListItemsWrap {
+    width: 100%;
+    height: max-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.TodoListItem {
+    width: 100%;
+    height: 60px;
+    background: #c4f1f9;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    display: flex;
+}
+
+.TodoListItemText {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TodoListItemAction {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TodoListItemActionFirst {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    gap: 20px;
+}
+
+.TodoListItemActionFirstA {
+    cursor: pointer;
+    color: red;
+}
+
+.TodoListItemActionFirstB {
+    cursor: pointer;
+    color: orange;
+}
+
+.TodoListItemActionSecond {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.TodoListItemActionFirstC {
+    cursor: pointer;
+    color: green;
+}
+
+.editInputHold {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editInput {
+    width: 80%;
+    height: 40px;
+    padding-left: 10px;
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.cancelBtn {
+    width: max-content;
+    height: max-content;
+    padding: 8px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+    .TodoBody {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 30px 0px;
+    }
+  }
